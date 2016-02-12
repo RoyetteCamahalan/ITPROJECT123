@@ -94,7 +94,7 @@
 </div>
 <!--Start of Table-->
 <div class="row">
-    <div class="box col-md-12">
+  <div class="box col-md-12">
     <div class="box-inner">
     <!--div class="box-header well" data-original-title="">
 
@@ -111,7 +111,17 @@
         {{ Session::get("flash_message")["msg"] }}
     </div>
     @endif
-    <div class="box-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="nav-tabs-custom">
     <ul class="nav nav-tabs" id="myTab">
         <li class="active"><a href="#alldoctors">All Doctors</a></li>
         <li><a href="#forapproval">For Approval
@@ -119,6 +129,8 @@
                 <span class="notification green">{{count($forapproval)}}</span>
             @endif
         </a></li>
+        <li><a href="#institutions">Institutions</a></li>
+        <li><a href="#areas">Areas</a></li>
     </ul>
     <br>
     <div id="myTabContent" class="tab-content">
@@ -185,7 +197,7 @@
                     <th>Date Registered</th>
                     <th>Specialty</th>
                     <th>PRC License</th>
-                    <th>Actions</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>     
@@ -210,6 +222,71 @@
                 </tbody>
                 </table>
         </div>
+        <div class="tab-pane" id="institutions">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                <button class="btn-success btn pull-right btn-edit-add btn-sm" style="margin-bottom:5px" 
+                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
+                    data-target=".doctor-form" data-url="doctors/">
+                <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
+                <thead>
+                <tr>
+                    <th>Institution Name</th>
+                    <th>Address</th>
+                    <th>Date Added</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>     
+                @foreach($institutions as $institution)
+                    <tr>
+                        <td class="center"><a><span>{{ $institution->name}}</span></a></td>
+                        <td class="center">{{ $institution->address}}</td>
+                        <td class="center">{{ $institution->created_at}}</td>
+
+                        <td class="center" style="text-align: center;">
+                            <a class="btn btn-info btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
+                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+                </table>
+        </div>
+
+        <div class="tab-pane" id="areas">
+            <table class="table table-striped table-bordered bootstrap-datatable responsive">
+                <button class="btn-success btn pull-right btn-edit-add btn-sm" style="margin-bottom:5px" 
+                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
+                    data-target=".doctor-form" data-url="doctors/">
+                <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
+                <thead>
+                <tr>
+                    <th>Area</th>
+                    <th>Description</th>
+                    <th>Assigned Employee</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>     
+                @foreach($areas as $area)
+                    <tr>
+                        <td class="center"><a><span>{{ $area->name}}</span></a></td>
+                        <td class="center">{{ $area->description}}</td>
+                        <td class="center">{{ $area->fname.' '.$area->lname}}</td>
+
+                        <td class="center" style="text-align: center;">
+                            <a class="btn btn-info btn-xs btn-edit-add" href="#">
+                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+                </table>
+        </div>
     </div>
     </div>
     </div>
@@ -217,6 +294,67 @@
     <!--/span-->
 
  </div><!--/row-->
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="modal-header">
+                <h5 class="title">Doctor Name - Institutions</h5>
+            </div>
+            <div class="details">
+                <table class="table table-striped bootstrap-datatable responsive">
+                <button class="btn-success btn pull-right btn-edit-add btn-sm" style="margin-bottom:5px" 
+                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
+                    data-target=".doctor-form" data-url="doctors/">
+                <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
+                <thead>
+                <tr>
+                    <th>Institution Name</th>
+                    <th>Address</th>
+                    <th>Date Added</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>     
+                @foreach($institutions as $institution)
+                    <tr>
+                        <td class="center"><a><span>{{ $institution->name}}</span></a></td>
+                        <td class="center">{{ $institution->address}}</td>
+                        <td class="center">{{ $institution->created_at}}</td>
+
+                        <td class="center" style="text-align: center;">
+                            <a class="btn btn-info btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
+                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
 </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
