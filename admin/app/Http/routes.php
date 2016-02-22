@@ -23,6 +23,9 @@ Route::post('doctors/store', 'DoctorsController@store');
 Route::post('doctors/update', 'DoctorsController@update');
 
 
+Route::get('institutions',['as' => 'institutions', 'uses' => 'InstitutionsController@index']);
+Route::get('institutions/getdoctors/{id}', 'DoctorsController@getdoctors');
+
 Route::get('employees', ['as' => 'User', 'uses' => 'EmployeesController@index']);
 
 

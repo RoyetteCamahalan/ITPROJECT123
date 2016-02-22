@@ -3,7 +3,7 @@ use Redirect;
 use App\doctors;
 use App\specializations;
 use App\institutions;
-use App\area;
+
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -38,10 +38,9 @@ class DoctorsController extends Controller {
 	{
 		$doctors=doctors::join('specializations', 'specializations.id', '=', 'doctors.specialization_id_fk')->where('is_active','!=','0')->get();
 		$forapproval=doctors::join('specializations', 'specializations.id', '=', 'doctors.specialization_id_fk')->where('is_active','=','0')->get();
-		$institutions=institutions::all();
 		$specializations=specializations::all();
-		$areas=area::join('users','areas.assigned_employee',"=","users.id")->get();
-		return view('doctors',compact('doctors','forapproval','specializations','institutions','areas'));
+		$institutions=institutions::all();
+		return view('doctors',compact('doctors','forapproval','specializations','institutions'));
 	}
 
 	public function show($doc_id){
