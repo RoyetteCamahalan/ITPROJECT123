@@ -45,9 +45,7 @@
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane active" id="alldoctors">
             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-                <button class="btn-success btn pull-right btn-edit-add btn-sm" style="margin-bottom:5px" 
-                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
-                    data-target=".doctor-form" data-url="doctors/">
+                <button class="btn-success btn pull-right add-doctor btn-sm" style="margin-bottom:5px" >
                 <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
                 <thead>
                 <tr>
@@ -74,10 +72,10 @@
                             @endif
                         </td>
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-success btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="View" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
+                            <a class="btn btn-success btn-xs view-edit-doctor" href="#" data-modal-target="#DoctorModal" data-action="View" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
                                 <i class="glyphicon glyphicon-eye-open icon-white"></i>
                             </a>
-                            <a class="btn btn-info btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
+                            <a class="btn btn-info btn-xs view-edit-doctor" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
                             @if($doctor->is_active==2)
@@ -168,56 +166,6 @@
 <!--/span-->
  </div><!--/row-->
 
-
-
-
-
-
-
-
-<!--div class="row">
-    <div class="box col-md-12">
-        <div class="box-inner">
-            <div class="modal-header">
-                <h5 class="title">Doctor Name - Institutions</h5>
-            </div>
-            <div class="details">
-                <table class="table table-striped bootstrap-datatable responsive">
-                <button class="btn-success btn pull-right btn-edit-add btn-sm" style="margin-bottom:5px" 
-                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
-                    data-target=".doctor-form" data-url="doctors/">
-                <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
-                <thead>
-                <tr>
-                    <th>Institution Name</th>
-                    <th>Address</th>
-                    <th>Date Added</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>     
-                @foreach($institutions as $institution)
-                    <tr>
-                        <td class="center"><a><span>{{ $institution->name}}</span></a></td>
-                        <td class="center">{{ $institution->address}}</td>
-                        <td class="center">{{ $institution->created_at}}</td>
-
-                        <td class="center" style="text-align: center;">
-                            <a class="btn btn-info btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
-                                <i class="glyphicon glyphicon-edit icon-white"></i>
-                            </a>
-                            
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-                </table>
-
-            </div>
-
-        </div>
-    </div>
-</div-->
 
        <!-- content ends -->
 </div><!--/#content.col-md-0-->

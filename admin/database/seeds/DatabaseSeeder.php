@@ -8,6 +8,7 @@ use Database\Seeder\SpecializationsSeeder;
 use Database\Seeder\DoctorSeeder;
 use Database\Seeder\InstitutionSeeder;
 use Database\Seeder\AreaSeeder;
+use Database\Seeder\ProductsSeeder;
 class DatabaseSeeder extends Seeder {
 
 	/**
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('DoctorSeeder');
 		$this->call('InstitutionSeeder');
 		$this->call('AreaSeeder');
+		$this->call('ProductsSeeder');
 	}
 
 }

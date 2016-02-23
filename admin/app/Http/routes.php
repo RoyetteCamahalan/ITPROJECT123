@@ -26,8 +26,10 @@ Route::post('doctors/update', 'DoctorsController@update');
 Route::get('institutions',['as' => 'institutions', 'uses' => 'InstitutionsController@index']);
 Route::get('institutions/getdoctors/{id}', 'DoctorsController@getdoctors');
 
-Route::get('employees', ['as' => 'User', 'uses' => 'EmployeesController@index']);
+Route::get('employees', ['as' => 'Employee', 'uses' => 'EmployeesController@index']);
 
+Route::get('products', ['as' => 'Product', 'uses' => 'ProductsController@index']);
+Route::post('products/store', 'ProductsController@store');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

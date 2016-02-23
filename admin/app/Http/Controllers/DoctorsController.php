@@ -57,7 +57,10 @@ class DoctorsController extends Controller {
         $doctor->email = $input['email'];
         $doctor->contact_number = $input['contact_number'];
         if($doctor->save())
-        	return Redirect::to( route('doctors') );
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Doctor successfully Added',
+            'type' => 'success'
+        ]);
         return false;
 	}
 

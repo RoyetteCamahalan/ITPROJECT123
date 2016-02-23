@@ -1,18 +1,22 @@
 $(document).ready(function () {
-    $("#select2").select2();
-	$(".datatable").on("click",".btn-edit-add",function(){
+
+    $('.add-doctor').on('click',function(){
+        var target='#DoctorModal';
+        $(target).find('.doctor-form').attr('action','doctors/store');
+        $(target).find('.title').text('Add Doctor');
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
+	$(".datatable").on("click",".view-edit-doctor",function(){
         var action = $(this).attr('data-action');
         var title =$(this).attr('data-title');
+        var text = $(this).text();
         var target=$(this).attr('data-modal-target');
         $(target).find('.title').text(action+' '+title);
         var targetform=$(this).attr('data-target');
         console.log("targetform1: "+targetform);
         var url =$(this).attr('data-url');
-        if(action=="Add"){
-        	console.log(url+'store targetform='+targetform);
-        	$(target).find(targetform).attr('action',url+'store');
-        }
-        else if(action=="Edit"){
+        if(action=="Edit"){
         	var id =$(this).attr('data-id');
         	$(targetform).find("button[name='btn-save']").removeAttr('class','hidden');
         	$(targetform).find("button[name='btn-save']").attr('class','btn btn-success btn-sm');
@@ -132,4 +136,11 @@ $(".btn-add-details-institution").on("click",function(){
             //autoFocus:true
     });*/
 
+
+$(".add-product").on("click",function(){
+        $('#ProductModal').find('.title').text('Add Product');
+        $('#ProductModal').find('.product-form').attr('action','products/store');
+        $('#ProductModal').modal('show');
+        $('#ProductModal').modal({"backdrop": "static"});
+    });
 });
