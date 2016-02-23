@@ -51,13 +51,13 @@ return [
 			'database' => storage_path().'/database.sqlite',
 			'prefix'   => '',
 		],
-
+		//128.199.83.60
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', '128.199.83.60'),
+			'host'      => env('DB_HOST', 'localhost'),
 			'database'  => env('DB_DATABASE', 'ece_calls'),
-			'username'  => env('DB_USERNAME', 'uretlaptop'),
-			'password'  => env('DB_PASSWORD', 'uretlaptop'),
+			'username'  => env('DB_USERNAME', 'vbfcbry07'),
+			'password'  => env('DB_PASSWORD', 'trusted143'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
