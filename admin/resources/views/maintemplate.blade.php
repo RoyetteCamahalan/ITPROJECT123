@@ -42,7 +42,7 @@
     <link id="bs-css" href="{{asset('/select2/select2.min.css')}}" rel="stylesheet" />
     <link id="bs-css" href="{{ asset('/css/styles.css') }}" rel="stylesheet">
 
-    <!-- jQuery -->s
+    <!-- jQuery -->
     <script src="{{ asset('/bower_components/jquery/jquery.min.js') }}"></script>
     <!-- The styles -->
 
@@ -130,7 +130,7 @@
                         </li>
                         <li><a class="ajax-link" href="chart.html"><i class="glyphicon glyphicon-calendar"></i><span> Coverage Plans</span></a>
                         </li>
-                        <li><a class="ajax-link" href="products"><i class="glyphicon glyphicon-font"></i><span> Products</span></a>
+                        <li><a class="ajax-link" href="products"><i class="glyphicon glyphicon-qrcode"></i><span> Products</span></a>
                         <li><a class="ajax-link" href="employees"><i class="glyphicon glyphicon-font"></i><span> Employees</span></a>
                         </li>
                         

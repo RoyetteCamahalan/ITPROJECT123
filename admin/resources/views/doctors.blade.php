@@ -131,6 +131,36 @@
                 </tbody>
                 </table>
         </div>
+
+        <div class="tab-pane" id="specialization">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                <button class="btn-success btn pull-right btn-sm" style="margin-bottom:5px" 
+                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
+                    data-target=".doctor-form" data-url="doctors/">
+                <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date Added</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>     
+                @foreach($specializations as $specialization)
+                    <tr>
+                        <td>{{ $specialization->name}}</td>
+                        <td class="center">{{ $specialization->created_at}}</td>
+                        <td class="center" style="text-align: center;">
+                            <a class="btn btn-success btn-xs">
+                                <i class="glyphicon glyphicon-edit icon-white" href="#"></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+                </table>
+        </div>
     </div>
     </div>
     </div>
