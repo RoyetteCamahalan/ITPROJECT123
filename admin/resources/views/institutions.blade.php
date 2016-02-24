@@ -40,14 +40,13 @@
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane active" id="institutions">
             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-                <button class="btn-success btn pull-right btn-edit-add btn-sm" style="margin-bottom:5px" 
-                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
-                    data-target=".doctor-form" data-url="doctors/">
+                <button class="btn-success btn pull-right add-institution btn-sm" style="margin-bottom:5px">
                 <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
                 <thead>
                 <tr>
                     <th>Institution Name</th>
                     <th>Address</th>
+                    <th>Area</th>
                     <th>Date Added</th>
                     <th>Actions</th>
                 </tr>
@@ -58,6 +57,7 @@
                         <td class="center"><a  class="institution-name" data-title="{{ $institution->name}}" data-id="{{ $institution->id}}">
                         <span>{{ $institution->name}}</span></a></td>
                         <td class="center">{{ $institution->address}}</td>
+                        <td class="center">{{ $institution->area_name}}</td>
                         <td class="center">{{ $institution->created_at}}</td>
 
                         <td class="center" style="text-align: center;">
@@ -74,9 +74,7 @@
 
         <div class="tab-pane" id="areas">
             <table class="table table-striped table-bordered bootstrap-datatable responsive">
-                <button class="btn-success btn pull-right btn-edit-add btn-sm" style="margin-bottom:5px" 
-                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
-                    data-target=".doctor-form" data-url="doctors/">
+                <button class="btn-success btn pull-right add-area btn-sm" style="margin-bottom:5px">
                 <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
                 <thead>
                 <tr>
@@ -127,8 +125,7 @@
             </div>
             <div class="details">
                 <table class="table table-striped bootstrap-datatable responsive">
-                <button class="btn-success btn pull-right btn-add-details-institution btn-sm" style="margin-bottom:5px" 
-                    data-action="Add" data-target='institutiondoctorsmaps' data-id='0'>
+                <button class="btn-success btn pull-right add-doctormap btn-sm" style="margin-bottom:5px"  data-id='0'>
                 <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
                 </table>
 
@@ -185,6 +182,140 @@
                         <div class="form-group">
                             <label for="contact_number">Contact Number</label>
                             <input type="text" class="form-control contact_number" name="contact_number">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-success btn-sm" name="btn-save">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="InstitutionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="title">Settings</h4> 
+                </div>
+                <form class="form-horizontal institution-form" role="form" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="modal-body">
+                            <input type="hidden" class="form-control id" name="id">
+                        <div class="form-group">
+                            <label for="name">Institution Name</label>
+                            <input type="text" class="form-control name" required name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control address" required name="address">
+                        </div>
+                         <div class="form-group">
+                            <label for="area_id">Address</label>
+                            <br>
+                            <select class="form-control area_id" id="select2" required name="area_id">
+                                @foreach($areas as $area)
+                                    <option value="{{ $area->id}}">{{ $area->name}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-success btn-sm" name="btn-save">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade" id="AreaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="title">Settings</h4> 
+                </div>
+                <form class="form-horizontal area-form" role="form" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="modal-body">
+                            <input type="hidden" class="form-control id" name="id">
+                        <div class="form-group">
+                            <label for="name">Area Name</label>
+                            <input type="text" class="form-control name" required name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control description" required name="description">
+                        </div>
+                         <div class="form-group">
+                            <label for="assigned_employee">Address</label>
+                            <br>
+                            <select class="form-control assigned_employee" id="select2" required name="assigned_employee">
+                                @foreach($areas as $area)
+                                    <option value="{{ $area->id}}">{{ $area->name}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-success btn-sm" name="btn-save">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="DoctorMapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="title">Settings</h4> 
+                </div>
+                <form class="form-horizontal doctormap-form" role="form" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="modal-body">
+                            <input type="hidden" class="form-control institution_id_fk" name="institution_id_fk">
+                        <div class="form-group">
+                            <label for="doctor_id_fk">Doctor Name</label>
+                            <select class="form-control doctor_id_fk" id="select2" required name="doctor_id_fk">
+                                @foreach($doctors as $doctor)
+                                    <option value="{{ $doctor->doc_id}}">{{ $doctor->doc_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                       
+                         <div class="form-group">
+                            <label for="class_id_fk">Doctor Class</label>
+                            <br>
+                            <select class="form-control class_id_fk" id="select2" required name="class_id_fk">
+                                @foreach($doctorclasses as $doctorclass)
+                                    <option value="{{ $doctorclass->id}}">{{ $doctorclass->name}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                         <div class="form-group">
+                            <label for="best_time_to_call">Best Time to Call</label>
+                            <input type="text" class="form-control best_time_to_call" name="best_time_to_call">
+                        </div>
+                        <div class="form-group">
+                            <label for="room_number">Room No.</label>
+                            <input type="text" class="form-control room_number" name="room_number">
                         </div>
                     </div>
                     <div class="modal-footer">

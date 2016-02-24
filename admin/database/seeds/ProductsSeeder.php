@@ -2,7 +2,7 @@
 use Illuminate\Database\Seeder;
 use App\products;
 
-class productsSeeder extends Seeder {
+class ProductsSeeder extends Seeder {
 
     public function run()
     {

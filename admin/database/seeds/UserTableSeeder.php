@@ -11,6 +11,7 @@ class UserTableSeeder extends Seeder {
         User::create(['fname' => 'Royette',
         			  'mname'=>'Masayao',
                       'lname'=>'Camahalan',
+                      'username'=>'uret',
                       'email'=>'abcd@gmail.com',
                       'password'=>'$2y$10$QQO4Vdy3ShnKs1YagqZwV.1V8dGxYln2dtQzldPgEY6oZW5coAlxC',
                       'position'=>'SVS',

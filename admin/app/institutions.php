@@ -12,6 +12,6 @@ class institutions extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name','address'];
+	protected $fillable = ['name','address','area_id'];
 
 }

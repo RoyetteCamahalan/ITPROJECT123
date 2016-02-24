@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    $("#select2").select2();
+
     $('.add-doctor').on('click',function(){
         var target='#DoctorModal';
         $(target).find('.doctor-form').attr('action','doctors/store');
@@ -78,7 +80,7 @@ $(".institution-name").on("click",function(){
         var $this=$(this);
         var title=$this.attr("data-title");
         var id=$this.attr('data-id');
-        $('.btn-add-details-institution').attr('data-id',id);
+        $('.add-doctormap').attr('data-id',id);
         $('.title-details').text('Doctor list for '+title);
         $('.section-details').removeClass("hidden").addClass("visible");
         $('html, body').animate({
@@ -142,5 +144,32 @@ $(".add-product").on("click",function(){
         $('#ProductModal').find('.product-form').attr('action','products/store');
         $('#ProductModal').modal('show');
         $('#ProductModal').modal({"backdrop": "static"});
+    });
+
+
+$('.add-institution').on('click',function(){
+        var target='#InstitutionModal';
+        $(target).find('.institution-form').attr('action','institutions/store');
+        $(target).find('.title').text('Add Institution');
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
+
+$('.add-area').on('click',function(){
+        var target='#AreaModal';
+        $(target).find('.area-form').attr('action','area/store');
+        $(target).find('.title').text('Add Area');
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
+
+$('.add-doctormap').on('click',function(){
+        var target='#DoctorMapModal';
+        var id=$(this).attr('data-id');
+        $(target).find('.doctormap-form').attr('action','institutions/storemap');
+        $('.doctormap-form').find('.institution_id_fk').val(id);
+        $(target).find('.title').text('Add Doctor');
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
     });
 });
