@@ -6,7 +6,7 @@ use App\institutions;
 use App\area;
 use App\doctorclasses;
 use App\doctors;
-use App\institutiondoctorsmap;
+use App\institutiondoctorsmaps;
 use Illuminate\Http\Request;
 
 class InstitutionsController extends Controller {
@@ -58,7 +58,7 @@ class InstitutionsController extends Controller {
 	public function storemap(Request $request)
 	{
 		$input = $request->all();
-        $map = new institutiondoctorsmap;
+        $map = new institutiondoctorsmaps;
         $map->institution_id_fk =  $input['institution_id_fk'];
         $map->doctor_id_fk = $input['doctor_id_fk'];
         $map->class_id_fk = $input['class_id_fk'];

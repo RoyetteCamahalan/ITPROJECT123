@@ -42,6 +42,7 @@
     <link id="bs-css" href="{{asset('/select2/select2.min.css')}}" rel="stylesheet" />
     <link id="bs-css" href="{{ asset('/css/styles.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- jQuery -->
     <script src="{{ asset('/bower_components/jquery/jquery.min.js') }}"></script>
     <!-- The styles -->
@@ -122,16 +123,16 @@
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">Main</li>
-                        <li><a class="ajax-link" href="/"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
-                        </li>
-                        <li><a class="ajax-link" href="doctors"><i class="glyphicon glyphicon-eye-open"></i><span> Doctors</span></a>
+                        <li><a class="ajax-link" href="doctors"><i class="fa fa-user-md"></i><span> Doctors</span></a>
                         </li>
                         <li><a class="ajax-link" href="institutions"><i class="glyphicon glyphicon-tower"></i><span> Institutions</span></a>
                         </li>
                         <li><a class="ajax-link" href="coverageplan"><i class="glyphicon glyphicon-calendar"></i><span> Coverage Plans</span></a>
                         </li>
                         <li><a class="ajax-link" href="products"><i class="glyphicon glyphicon-qrcode"></i><span> Products</span></a>
+                        </li>
                         <li><a class="ajax-link" href="employees"><i class="glyphicon glyphicon-user"></i><span> Employees</span></a>
+                        </li>
                         <li><a class="ajax-link" href="reports"><i class="glyphicon glyphicon-file"></i><span> Reports</span></a>
                         </li>
                         
@@ -154,13 +155,9 @@
         <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
             <div>
+    <!--bread-->
     <ul class="breadcrumb">
-        <li>
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">Dashboard</a>
-        </li>
+
     </ul>
 </div>
 

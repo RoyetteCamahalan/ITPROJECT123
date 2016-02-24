@@ -172,4 +172,13 @@ $('.add-doctormap').on('click',function(){
         $(target).modal('show');
         $(target).modal({"backdrop": "static"});
     });
+
+$('.add-employee').on('click',function(){
+        var target='#UserModal';
+        var id=$(this).attr('data-id');
+        $(target).find('.user-form').attr('action','employees/store');
+        $(target).find('.title').text('Add Employee');
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
 });

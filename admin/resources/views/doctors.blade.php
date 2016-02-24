@@ -202,7 +202,7 @@
                         </div>
                         <div class="form-group">
                             <label for="birthday">Birthdate</label>
-                            <input type="text" class="form-control birthday" name="birthday">
+                            <input type="date" class="form-control birthday" name="birthday">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>

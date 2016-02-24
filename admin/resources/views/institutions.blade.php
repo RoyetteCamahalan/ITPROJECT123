@@ -124,9 +124,21 @@
                 <h4 class="title-details">Doctor Name - Institutions</h4>
             </div>
             <div class="details">
-                <table class="table table-striped bootstrap-datatable responsive">
-                <button class="btn-success btn pull-right add-doctormap btn-sm" style="margin-bottom:5px"  data-id='0'>
-                <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
+                <table class="table table-striped bootstrap-datatable responsive" id="list-doctors">
+                    <button class="btn-success btn pull-right add-doctormap btn-sm" style="margin-bottom:5px"  data-id='0'>
+                    <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
+
+                    <thead>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Description</th>
+                    <th>Assigned Employee</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>     
+                
+                </tbody>
                 </table>
 
             </div>

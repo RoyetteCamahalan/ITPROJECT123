@@ -22,9 +22,7 @@
     <div class="box-content">
     <br>
             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-                <button class="btn-success btn pull-right btn-edit-add btn-sm" style="margin-bottom:5px" 
-                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
-                    data-target=".doctor-form" data-url="doctors/">
+                <button class="btn-success btn pull-right add-employee btn-sm" style="margin-bottom:5px">
                 <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
                 <thead>
                 <tr>
@@ -39,7 +37,7 @@
                 <tbody>     
                 @foreach($User as $users)
                     <tr>
-                        <td>{{ $users->fname}}</td>
+                        <td>{{ $users->fname.' '.$users->lname}}</td>
                         <td class="center">{{ $users->position}}</td>
                         <td class="center">{{ $users->hired_date}}</td>
                         <td class="center">{{ $users->email}}</td>
@@ -83,4 +81,78 @@
 
 </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
+
+
+
+<div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="title">Settings</h4> 
+                </div>
+                <form class="form-horizontal user-form" role="form" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="modal-body">
+                        <input type="hidden" class="form-control institution_id_fk" name="institution_id_fk">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">First Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="fname" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Middle Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="mname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Last Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="lname" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Position</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="position" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Username</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="username" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Confirm Password</label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-success btn-sm" name="btn-save">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @stop
