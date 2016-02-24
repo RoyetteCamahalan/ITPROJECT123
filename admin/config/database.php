@@ -54,12 +54,7 @@ return [
 		//128.199.83.60
 		'mysql' => [
 			'driver'    => 'mysql',
-<<<<<<< HEAD
-			'host'      => env('DB_HOST', '108.179.232.162'),
-			'database'  => env('DB_DATABASE', 'vbfcbry0_ece_calls'),
-			'username'  => env('DB_USERNAME', 'vbfcbry0_uret'),
-			'password'  => env('DB_PASSWORD', 'urett'),
-=======
+
 			'host'      => env('DB_HOST', 'localhost'),
 			//'host'      => env('DB_HOST', '108.179.232.162'),
 			'database'  => env('DB_DATABASE', 'vbfcbry0_ece_calls'),
@@ -69,7 +64,6 @@ return [
 			//'database'  => env('DB_DATABASE', 'ece_calls'),
 			//'username'  => env('DB_USERNAME', 'root'),
 			//'password'  => env('DB_PASSWORD', ''),
->>>>>>> e21897b078256450b5683852d434f287cf26f2ec
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
