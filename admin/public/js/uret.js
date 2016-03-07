@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#select2").select2();
+    $("#select2").select2({});
 
     $('.add-doctor').on('click',function(){
         var target='#DoctorModal';
@@ -86,27 +86,18 @@ $(".institution-name").on("click",function(){
         $('html, body').animate({
               scrollTop: $(".section-details").offset().top
         }, 1000);
-        var id =$(this).attr('data-id');
-        /*$.ajax({
-            url : url+id,
+        $("#doctormapdetails-body").empty();
+        $.ajax({
+            url : 'institutions/showmap/'+id,
             type : 'get',
-            dataType : 'json'
+            dataType : 'text'
         }).done(function (data){
-            $(target).find(targetform).attr('action',url+'update').attr('method','POST');
-            console.log("action: "+url+id);
-            console.log(data);
-            $.each(data,function(i,row){
-                $(targetform).find("input[name='"+i+"']").val(row);
-                $(targetform).find("select[name='"+i+"']").removeAttr("selected")
-                    .children("option[value='"+row+"']").attr("selected", "selected");
-            });
-
-        });*/
-        console.log("ipakita");
+                console.log(data);
+                $("#list-doctors tbody").append(data);
+        });
     });
 $(".tab-page").on("click",function(){
         $('.section-details').removeClass("visible").addClass("hidden");
-        console.log("itago");
     });
 
 
@@ -178,6 +169,31 @@ $('.add-employee').on('click',function(){
         var id=$(this).attr('data-id');
         $(target).find('.user-form').attr('action','employees/store');
         $(target).find('.title').text('Add Employee');
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
+
+$('.btn-add-replenishment').on('click',function(){
+        var target='#ReplineshmentModal';
+        $(target).find('.replenishment-form').attr('action','material_inventory/store');
+        $(target).find('.title').text('Add Inventory');
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
+$('.btn-edit-replenishment').on('click',function(){
+        var target='#ReplineshmentModal';
+        var id=$(this).attr('data-id');
+        var pid=$(this).attr('data-pid');
+        var mid=$(this).attr('data-mid');
+        var count=$(this).attr('data-count');
+        var targetform='.replenishment-form';
+        $(target).find(targetform).attr('action','material_inventory/update');
+        $(targetform).find("input[name='id']").val(id);
+        $("#select2").select2().select2('val',pid);
+        $(targetform).find("select[name='material_id_fk']").removeAttr("selected")
+            .children("option[value='"+mid+"']").attr("selected", "selected");
+        $(targetform).find("input[name='material_count']").val(count);
+        $(target).find('.title').text('Add Inventory');
         $(target).modal('show');
         $(target).modal({"backdrop": "static"});
     });

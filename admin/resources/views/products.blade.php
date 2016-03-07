@@ -23,31 +23,71 @@
     @endif
 
 <br>
-            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive table-products">
-                <button class="btn-success btn pull-right add-product btn-sm" style="margin-bottom:5px" >
-                <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Date Added</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>     
-                @foreach($products as $product)
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#productlist">Products</a></li>
+            <li><a href="#materiallist">Materials</a></li>
+        </ul>
+        <br>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane active" id="productlist">
+                 <table class="table table-striped table-bordered bootstrap-datatable datatable responsive table-products">
+                    <button class="btn-success btn pull-right add-product btn-sm" style="margin-bottom:5px" >
+                    <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
+                    <thead>
                     <tr>
-                        <td>{{ $product->name}}</td>
-                        <td class="center">{{ $product->created_at}}</td>
-                        <td class="center" style="text-align: center;">
-                        <a class="btn btn-info btn-xs add-edit-product" href="#"  data-action="Edit" data-id="{{ $product->id}}">
-                            <i class="glyphicon glyphicon-edit icon-white"></i>
-                        </a>
-                            
-                        </td>
+                        <th>Name</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>     
+                    @foreach($products as $product)
+                        <tr>
+                            <td>{{ $product->name}}</td>
+                            <td class="center">{{ $product->created_at}}</td>
+                            <td class="center" style="text-align: center;">
+                            <a class="btn btn-info btn-xs add-edit-product" href="#"  data-action="Edit" data-id="{{ $product->id}}">
+                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                            </a>
+                                
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane" id="materiallist">
+                 <table class="table table-striped table-bordered bootstrap-datatable responsive table-products">
+                    <button class="btn-success btn pull-right add-product btn-sm" style="margin-bottom:5px" >
+                    <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>     
+                    @foreach($materials as $material)
+                        <tr>
+                            <td>{{ $material->name}}</td>
+                            <td class="center">{{ $material->created_at}}</td>
+                            <td class="center" style="text-align: center;">
+                            <a class="btn btn-info btn-xs add-edit-product" href="#"  data-action="Edit" data-id="{{ $material->id}}">
+                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                            </a>
+                                
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     </div>
 </div>
 <!--/span-->

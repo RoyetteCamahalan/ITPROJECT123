@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 use Redirect;
+use Mail;
+
 use App\User;
 use App\specializations;
 use Illuminate\Http\Request;
@@ -47,7 +49,12 @@ class EmployeesController extends Controller {
 	public function store(Request $request){
         $user = new User;
         $user->fill($request->all());
+        $data['name']=$request->username;
+        $data['email']=$request->email;
         if($user->save())
+        	Mail::send('welcome',['data'=>$data],function($mail) use ($data){
+        		$mail->to($data['email'],$data['name'])->from('royette.camahalan09@gmail.com')->subject('Welcome to ECE Calls');
+        	});
         	return Redirect::back()->withFlash_message([
             'msg' => ' Employee successfully Added',
             'type' => 'success'

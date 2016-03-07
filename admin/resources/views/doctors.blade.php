@@ -36,7 +36,7 @@
         <li class="active"><a href="#alldoctors">All Doctors</a></li>
         <li><a href="#forapproval">For Approval
             @if (count($forapproval) > 0)
-                <span class="notification green">{{count($forapproval)}}</span>
+                <span class="badge">{{count($forapproval)}}</span>
             @endif
         </a></li>
         <li><a href="#specialization">Specializations</a></li>
@@ -72,7 +72,7 @@
                             @endif
                         </td>
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-success btn-xs view-edit-doctor" href="#" data-modal-target="#DoctorModal" data-action="View" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
+                            <a class="btn btn-success btn-xs view-edit-doctor" href="#" data-modal-target="#ViewDoctorModal" data-action="View" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".view-doctor-form">
                                 <i class="glyphicon glyphicon-eye-open icon-white"></i>
                             </a>
                             <a class="btn btn-info btn-xs view-edit-doctor" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
@@ -221,6 +221,61 @@
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="ViewDoctorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="title">Settings</h4> 
+                </div>
+                <form class="form-horizontal view-doctor-form" role="form" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="modal-body">
+                            <input type="hidden" class="form-control doc_id" name="doc_id">
+                        <div class="form-group">
+                            <label for="doc_name">Doctor Name</label>
+                            <input type="text" class="form-control doc_name" required name="doc_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="prc_license">PRC License</label>
+                            <input type="text" class="form-control prc_license" required name="prc_license">
+                        </div>
+                        <div class="form-group">
+                            <label for="specialization_id_fk">Specialization</label>
+                            <select class="form-control specialization_id_fk" name="specialization_id_fk">
+                                @foreach($specializations as $specialization)
+                                    <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>
+                                @endforeach
+                            </select> 
+                            <span class="text-danger">{{ $errors->first('specialization_id_fk') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday">Birthdate</label>
+                            <input type="date" class="form-control birthday" name="birthday">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_number">Contact Number</label>
+                            <input type="text" class="form-control contact_number" name="contact_number">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <div class="modal fade" id="DoctorModal-Accept" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
 

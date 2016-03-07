@@ -131,12 +131,14 @@
                     <thead>
                 <tr>
                     <th>Doctor Name</th>
-                    <th>Description</th>
-                    <th>Assigned Employee</th>
+                    <th>Doctor Class</th>
+                    <th>Max Visit</th>
+                    <th>Best Time to Call</th>
+                    <th>Room No.</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody>     
+                <tbody id="doctormapdetails-body">     
                 
                 </tbody>
                 </table>
@@ -267,7 +269,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="text" class="form-control description" required name="description">
+                            <input type="text" class="form-control description" name="description">
                         </div>
                          <div class="form-group">
                             <label for="assigned_employee">Address</label>

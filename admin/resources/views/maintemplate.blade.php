@@ -38,8 +38,7 @@
     <link id="bs-css" href="{{ asset('/css/jquery.iphone.toggle.css') }}" rel="stylesheet">
     <link id="bs-css" href="{{ asset('/css/uploadify.css') }}" rel="stylesheet">
     <link id="bs-css" href="{{ asset('/css/animate.min.css') }}" rel="stylesheet">
-    <link id="bs-css" href="{{asset('/select2/select2.css')}}" rel="stylesheet" />
-    <link id="bs-css" href="{{asset('/select2/select2.min.css')}}" rel="stylesheet" />
+    <link id="bs-css" href="{{asset('/css/select2.css')}}" rel="stylesheet" />
     <link id="bs-css" href="{{ asset('/css/styles.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -68,7 +67,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="img/ece_logo.jpg" class="hidden-xs"/>
+            <a class="navbar-brand" href="home"> <img alt="Charisma Logo" src="img/ece_logo.jpg" class="hidden-xs"/>
                 <span>ECE Calls</span></a>
 
             <!-- user dropdown starts -->
@@ -131,6 +130,8 @@
                         </li>
                         <li><a class="ajax-link" href="products"><i class="glyphicon glyphicon-qrcode"></i><span> Products</span></a>
                         </li>
+                        <li><a class="ajax-link" href="material_inventory"><i class="fa fa-cube"></i><span> Material Inventories</span></a>
+                        </li>
                         <li><a class="ajax-link" href="employees"><i class="glyphicon glyphicon-user"></i><span> Employees</span></a>
                         </li>
                         <li><a class="ajax-link" href="reports"><i class="glyphicon glyphicon-file"></i><span> Reports</span></a>
@@ -156,9 +157,10 @@
             <!-- content starts -->
             <div>
     <!--bread-->
-    <ul class="breadcrumb">
-
-    </ul>
+    <!--ul class="breadcrumb">
+        <li>Home</li>
+        <li>Dashboard</li>
+    </ul-->
 </div>
 
 
@@ -189,8 +191,8 @@
  <!--/.fluid-container-->
 
 <!-- external javascript -->
-<script src="{{ asset('/select2/select2.min.js') }}"></script>
-<script src="{{ asset('/select2/select2.js') }}"></script>
+<script src="{{ asset('/css/select2.min.js') }}"></script>
+<script src="{{ asset('/css/select2.js') }}"></script>
 
 <script src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- library for cookie management -->

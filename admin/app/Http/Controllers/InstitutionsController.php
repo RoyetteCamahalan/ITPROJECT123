@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class InstitutionsController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -83,6 +87,32 @@ class InstitutionsController extends Controller {
 		//
 	}
 
+	public function showmap($institution_id_fk)
+	{
+		$maps=institutiondoctorsmaps::join('doctors', 'doctors.doc_id', '=', 'institutiondoctorsmaps.doctor_id_fk')
+				->join('doctorclasses', 'doctorclasses.id', '=', 'institutiondoctorsmaps.class_id_fk')
+				->whereinstitution_id_fk($institution_id_fk)
+				->get(array('institutiondoctorsmaps.id','institutiondoctorsmaps.institution_id_fk','doctors.doc_name','institutiondoctorsmaps.best_time_to_call','institutiondoctorsmaps.room_number','doctorclasses.name as classname','doctorclasses.max_visit'));
+		$str='';
+		foreach ($maps as $map) {
+			$str=$str."<tr>
+						<td class='center'>".$map->doc_name."</td>
+						<td class='center'>".$map->classname."</td>
+						<td class='center'>".$map->max_visit	."</td>
+						<td class='center'>".$map->best_time_to_call."</td>
+						<td class='center'>".$map->room_number."</td>
+						<td class='center' style='text-align: center;'>
+                            <a class='btn btn-info btn-xs view-edit-doctor' href='#' data-id=".$map->id.">
+                                <i class='glyphicon glyphicon-edit icon-white'></i>
+                            </a>
+                            <a class='btn btn-danger btn-xs ' href='#' data-id=".$map->id.">
+                                <i class='glyphicon glyphicon-trash'></i>
+                            </a>
+                            
+                        </td></tr>";
+		}
+		return $str;
+	}
 	/**
 	 * Show the form for editing the specified resource.
 	 *

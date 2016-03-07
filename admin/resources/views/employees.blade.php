@@ -117,8 +117,12 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Position</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="position" required>
+                                <select class="form-control position" name="position" required>
+                                    <option value="Medical Representative">Medical Representative</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
                             </div>
+                            
                         </div>
                         
                         <div class="form-group">

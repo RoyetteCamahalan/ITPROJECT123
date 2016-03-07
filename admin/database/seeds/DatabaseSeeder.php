@@ -9,6 +9,10 @@ use Database\Seeder\DoctorSeeder;
 use Database\Seeder\InstitutionSeeder;
 use Database\Seeder\AreaSeeder;
 use Database\Seeder\ProductsSeeder;
+use Database\Seeder\MaterialsSeeder;
+use Database\Seeder\MaterialReplenishmentSeeder;
+use Database\Seeder\MaterialAllocationsSeeder;
+
 class DatabaseSeeder extends Seeder {
 
 	/**
@@ -27,6 +31,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('InstitutionSeeder');
 		$this->call('AreaSeeder');
 		$this->call('ProductsSeeder');
+		$this->call('MaterialsSeeder');
+		$this->call('MaterialReplenishmentSeeder');
+		$this->call('MaterialAllocationsSeeder');
 	}
 
 }
