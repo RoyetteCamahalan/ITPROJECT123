@@ -115,6 +115,7 @@ class EmployeesController extends Controller {
 																		<span style='color:black;'>Please login using this credentials:</span>
 																		<br/><br/>
 																		<span style='color:black;'>Email: </span><code>".$email."</code><br/>
+																		<span style='color:black;'>Username: </span><code>".$uname."</code><br/>
 																		<span style='color:black;'>Password: </span><code>".$password."</code>
 																		<br/><br/>
 																		<div style='text-align: center;'>
