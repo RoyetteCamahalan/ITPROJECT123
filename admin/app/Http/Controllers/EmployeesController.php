@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Exceptions\Handler;
 class EmployeesController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 	/*
 	|--------------------------------------------------------------------------
 	| Home Controller
@@ -71,7 +75,7 @@ class EmployeesController extends Controller {
 							$mail->SMTPAuth = true;
 							$mail->Username = "junixcordero@bsit701.com"; //smtp username
 							$mail->Password = "/.,mnbvcxz"; //smtp password
-							$mail->AddAddress( "royette.camahalan09@gmail.com", ""); //where email will be send to               variable
+							$mail->AddAddress($email, ""); //where email will be send to               variable
 							$mail->WordWrap = 1000; //set word wrap
 							//$mail->AddAttachment(); //add attachments
 							//$mail->AddAttachment();
