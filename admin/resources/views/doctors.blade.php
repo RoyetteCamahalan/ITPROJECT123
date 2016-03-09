@@ -76,7 +76,7 @@
                                 <i class="glyphicon glyphicon-eye-open icon-white"></i>
                             </a>
                             <a class="btn btn-info btn-xs view-edit-doctor" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
-                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                                <i class="glyphicon glyphicon-edit"></i>
                             </a>
                             @if($doctor->is_active==2)
                                 <a class="btn btn-success btn-xs btn-accept-doctor" href="#" data-modal-target="#DoctorModal-Accept" 
@@ -115,7 +115,7 @@
                         <td class="center">{{ $doctor->name}}</td>
                         <td class="center">{{ $doctor->prc_license}}</td>
                         <td class="center" style="text-align: center;">
-                           <a class="btn btn-success btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="View" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
+                           <a class="btn btn-info btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="View" data-title="Doctor" data-url="doctors/" data-id="{{ $doctor->doc_id}}"  data-target=".doctor-form">
                                 <i class="glyphicon glyphicon-eye-open icon-white"></i>
                             </a>
                             <a class="btn btn-success btn-xs btn-accept-doctor" href="#" data-modal-target="#DoctorModal-Accept" 

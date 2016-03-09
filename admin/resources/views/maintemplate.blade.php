@@ -126,7 +126,7 @@
                         </li>
                         <li><a class="ajax-link" href="institutions"><i class="glyphicon glyphicon-tower"></i><span> Institutions</span></a>
                         </li>
-                        <li><a class="ajax-link" href="coverageplan"><i class="glyphicon glyphicon-calendar"></i><span> Coverage Plans</span></a>
+                        <li><a class="ajax-link" href="plans"><i class="glyphicon glyphicon-calendar"></i><span> Coverage Plans</span></a>
                         </li>
                         <li><a class="ajax-link" href="products"><i class="glyphicon glyphicon-qrcode"></i><span> Products</span></a>
                         </li>

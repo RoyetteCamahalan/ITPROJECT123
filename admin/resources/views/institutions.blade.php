@@ -33,7 +33,7 @@
 
     <div class="nav-tabs-custom">
     <ul class="nav nav-tabs" id="myTab">
-        <li class="active"><a href="#institutions" class="tab-page">Institutions</a></li>
+        <li class="active tab-page"><a href="#institutions">Institutions</a></li>
         <li><a href="#areas" class="tab-page">Areas</a></li>
     </ul>
     <br>
@@ -61,7 +61,7 @@
                         <td class="center">{{ $institution->created_at}}</td>
 
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-info btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $institution->id}}"  data-target=".doctor-form">
+                            <a class="btn btn-success btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $institution->id}}"  data-target=".doctor-form">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
                             
@@ -92,7 +92,7 @@
                         <td class="center">{{ $area->fname.' '.$area->lname}}</td>
 
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-info btn-xs btn-edit-add" href="#">
+                            <a class="btn btn-success btn-xs btn-edit-add" href="#">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
                             
@@ -229,7 +229,7 @@
                             <input type="text" class="form-control address" required name="address">
                         </div>
                          <div class="form-group">
-                            <label for="area_id">Address</label>
+                            <label for="area_id">Area</label>
                             <br>
                             <select class="form-control area_id" id="select2" required name="area_id">
                                 @foreach($areas as $area)
@@ -272,11 +272,11 @@
                             <input type="text" class="form-control description" name="description">
                         </div>
                          <div class="form-group">
-                            <label for="assigned_employee">Address</label>
+                            <label for="assigned_employee">Assigned Employee</label>
                             <br>
-                            <select class="form-control assigned_employee" id="select2" required name="assigned_employee">
-                                @foreach($areas as $area)
-                                    <option value="{{ $area->id}}">{{ $area->name}}</option>
+                            <select class="form-control assigned_employee" required name="assigned_employee">
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id}}">{{ $user->fname}} {{ $user->lname}}</option>
                                 @endforeach
 
                             </select>

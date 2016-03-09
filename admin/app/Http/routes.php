@@ -40,6 +40,9 @@ Route::get('material_inventory', ['as' => 'material_inventory', 'uses' => 'Mater
 Route::post('material_inventory/store', 'MaterialInventoryController@store');
 Route::post('material_inventory/update', 'MaterialInventoryController@updatereplenishment');
 
+Route::get('plans', ['as' => 'Plans', 'uses' => 'PlansController@index']);
+Route::get('plans/{id}', 'PlansController@show');
+Route::post('plans/update', 'PlansController@update');
 
 Route::get('getinventory', 'WelcomeController@getinventory');
 Route::controllers([

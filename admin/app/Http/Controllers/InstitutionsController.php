@@ -7,6 +7,7 @@ use App\area;
 use App\doctorclasses;
 use App\doctors;
 use App\institutiondoctorsmaps;
+use App\User;
 use Illuminate\Http\Request;
 
 class InstitutionsController extends Controller {
@@ -27,7 +28,8 @@ class InstitutionsController extends Controller {
 		$areas=area::join('users','areas.assigned_employee',"=","users.id")->get(array('areas.id as id','areas.name','areas.description','areas.created_at','users.fname','users.lname'));
 		$doctors=doctors::orderBy('doc_name','asc')->get();
 		$doctorclasses=doctorclasses::all();
-		return view('institutions',compact('institutions','areas','doctorclasses','doctors'));
+		$users=User::whereposition('Medical Representative')->get();
+		return view('institutions',compact('institutions','areas','doctorclasses','doctors','users'));
 	}
 
 	/**

@@ -197,4 +197,49 @@ $('.btn-edit-replenishment').on('click',function(){
         $(target).modal('show');
         $(target).modal({"backdrop": "static"});
     });
+
+$(".view-plan-details").on("click",function(){
+        var $this=$(this);
+        var id=$this.attr('data-id');
+        var year=$this.attr('data-year');
+        var cycle=$this.attr('data-cycle');
+        $('.title-details').text('Coverage Plan for year '+year+' cycle '+cycle);
+        $('.section-plan-details').removeClass("hidden").addClass("visible");
+        $("#plan-details-body").empty();
+        $.ajax({
+            url : 'plans/'+id,
+            type : 'get',
+            dataType : 'text'
+        }).done(function (data){
+                $("#list-plan-details tbody").append(data);
+        });
+
+        $('html, body').animate({
+              scrollTop: $(".section-plan-details").offset().top
+        }, 1000);
+        /*$.ajax({
+            url : 'institutions/showmap/'+id,
+            type : 'get',
+            dataType : 'text'
+        }).done(function (data){
+                console.log(data);
+                $("#list-doctors tbody").append(data);
+        });*/
+    });
+$(".tab-page-plan").on("click",function(){
+        $('.section-plan-details').removeClass("visible").addClass("hidden");
+    });
+$(".btn-accept-decline-plan").on("click",function(){
+        var action = $(this).attr('data-action');
+        var target='#Plan-Modal-Accept';
+        var id =$(this).attr('data-id');
+        var targetform='.plan-form';
+        var value=$(this).attr('data-value');
+        $(targetform).find("input[name='id']").val(id);
+        $(targetform).find("input[name='status']").val(value);
+        $(target).find('.title').text('Do you want to '+action+' this plan?');
+        //$('.title').text(id);
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
 });

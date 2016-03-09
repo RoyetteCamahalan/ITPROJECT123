@@ -5,8 +5,8 @@ use Mail;
 use App\User;
 use App\specializations;
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
+use Illuminate\Exceptions\Handler;
 class EmployeesController extends Controller {
 
 	/*
@@ -19,16 +19,6 @@ class EmployeesController extends Controller {
 	| controller as you wish. It is just here to get your app started!
 	|
 	*/
-
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
 	/**
 	 * Show the application dashboard to the user.
 	 *
@@ -47,18 +37,40 @@ class EmployeesController extends Controller {
 		return $doctors->toJson();
 	}*/
 	public function store(Request $request){
-        $user = new User;
-        $user->fill($request->all());
-        $data['name']=$request->username;
-        $data['email']=$request->email;
-        if($user->save())
-        	Mail::send('welcome',['data'=>$data],function($mail) use ($data){
-        		$mail->to($data['email'],$data['name'])->from('royette.camahalan09@gmail.com')->subject('Welcome to ECE Calls');
-        	});
-        	return Redirect::back()->withFlash_message([
-            'msg' => ' Employee successfully Added',
-            'type' => 'success'
-        ]);
+			/*$user = new User;
+	        $user->fill($request->all());
+	        $input = $request->all();
+	        $fname=$input['fname'];
+	        $lname=$input['lname'];
+	        $email=$input['email'];;
+	        $uname=$input['username'];;
+	        $password=$input['password'];;
+	        if($user->save()){*/
+	        	/*$this->mailer->send( 'emails.register', function ($m){
+	                        $m->subject('Pharmacy Tree Registration');
+	                        $m->to('royette.camahalan09@gmail.com');
+	                }); */
+				 $mail = new \PHPMailer(true); 
+				        $mail->isSMTP(); // tell to use smtp
+				        $mail->CharSet = "utf-8"; // set charset to utf8
+				        $mail->SMTPAuth = true;  // use smpt auth
+				        $mail->SMTPSecure = "tls"; // or ssl
+				        $mail->Host = "smtp.gmail.com";
+				        $mail->Port = 587; // most likely something different for you. This is the mailtrap.io port i use for testing. 
+				        $mail->Username = "royette.camahalan09@gmail.com";
+				        $mail->Password = "urmajesty";
+				        $mail->setFrom("royette.camahalan09@gmail.com", "ECE Calls");
+				        $mail->Subject = "Test";
+				        $mail->MsgHTML("This is a test");
+				        $mail->addAddress("margiealviola29@gmail.com", "Recipient Name");
+				        $mail->send();
+	        	return Redirect::back()->withFlash_message([
+	            'msg' => ' Employee successfully Added',
+	            'type' => 'success'
+	        ]);
+	        //}
+       
+        	
         return false;
 	}
 /*
