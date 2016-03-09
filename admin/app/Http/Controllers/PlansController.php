@@ -18,10 +18,10 @@ class PlansController extends Controller {
 	public function index()
 	{
 		$forapprovals=plans::join('users','plans.user_id_fk','=','users.id')
-				->where('plans.status','=','0')
+				->where('plans.status_id','=','0')
 				->get(array('users.fname','users.lname','plans.id','plans.year','plans.cycle_number'));
 		$mcps=plans::join('users','plans.user_id_fk','=','users.id')
-				->where('plans.status','=','1')
+				->where('plans.status_id','=','1')
 				->get(array('users.fname','users.lname','plans.id','plans.year','plans.cycle_number','plans.status_date'));
 		return view('plans',compact('forapprovals','mcps'));
 	}

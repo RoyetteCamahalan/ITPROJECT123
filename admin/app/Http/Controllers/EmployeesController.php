@@ -49,7 +49,6 @@ class EmployeesController extends Controller {
 	        $user->position=$input['position'];
 	        $user->access_level=0;
 	        $user->branch_id=0;
-	        $user->dob=$input['dob'];
 
 	        $fname=$input['fname'];
 	        $lname=$input['lname'];
