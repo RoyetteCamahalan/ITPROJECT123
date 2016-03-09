@@ -95,7 +95,7 @@
                 <form class="form-horizontal user-form" role="form" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="modal-body">
-                        <input type="hidden" class="form-control institution_id_fk" name="institution_id_fk">
+                        <input type="hidden" class="form-control id" name="id">
                         <div class="form-group">
                             <label class="col-md-4 control-label">First Name</label>
                             <div class="col-md-6">

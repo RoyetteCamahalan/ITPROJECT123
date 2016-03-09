@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration {
 			$table->integer('access_level');
 			$table->date('hired_date')->nullable();
 			$table->date('dob')->nullable();
-			$table->integer('branch_id');
+			$table->integer('branch_id')->default('1');
 			$table->integer('is_active')->default('1');
 			$table->rememberToken();
 			$table->timestamps();

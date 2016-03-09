@@ -38,13 +38,24 @@ class EmployeesController extends Controller {
 	}*/
 	public function store(Request $request){
 			$user = new User;
-	        $user->fill($request->all());
+
 	        $input = $request->all();
+	        $user->fname=$input['fname'];
+	        $user->mname=$input['mname'];
+	        $user->lname=$input['lname'];
+	        $user->username=$input['username'];
+	        $user->email=$input['email'];
+	        $user->password=bcrypt($input['password']);
+	        $user->position=$input['position'];
+	        $user->access_level=0;
+	        $user->branch_id=0;
+	        $user->dob=$input['dob'];
+
 	        $fname=$input['fname'];
 	        $lname=$input['lname'];
-	        $email=$input['email'];;
-	        $uname=$input['username'];;
-	        $password=$input['password'];;
+	        $email=$input['email'];
+	        $uname=$input['username'];
+	        $password=$input['password'];
 	        if($user->save()){
 				 $mail = new \PHPMailer(true); 
 				         $mail->IsSMTP(); //set mailer to user SMTP
@@ -100,7 +111,7 @@ class EmployeesController extends Controller {
 															<tr>
 																<td>
 																	<div style='font-size: 14px;color:black !important;'>
-																		<span>Hi ".$fname."' '".$lname"</span><br/>
+																		<span>Hi ".$fname." ".$lname."</span><br/>
 																		You have been added as employee to ECE Calls. <br/>
 																		<span style='color:black;'>Please login using this credentials:</span>
 																		<br/><br/>
