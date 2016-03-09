@@ -15,6 +15,7 @@ class CreateCallsTable extends Migration {
 		Schema::create('calls', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('user_id_fk');
 			$table->integer('INST_DOC_ID_FK');
 			$table->integer('day_number');
 			$table->integer('STATUS_ID_FK');
