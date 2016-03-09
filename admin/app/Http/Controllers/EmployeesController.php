@@ -45,8 +45,12 @@ class EmployeesController extends Controller {
 	        $user->lname=$input['lname'];
 	        $user->username=$input['username'];
 	        $user->email=$input['email'];
-	        $user->password=bcrypt($input['password']);
 	        $user->position=$input['position'];
+	        if($input['position']=='Admin'){
+	        	$user->password=bcrypt($input['password']);
+	        }else{
+	        	$user->password=$input['password'];
+	        }
 	        $user->access_level=0;
 	        $user->branch_id=0;
 
