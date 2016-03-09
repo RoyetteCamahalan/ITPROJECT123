@@ -23,13 +23,13 @@
     <br>    
         <div class="form-group">
             <label for="user_id">Employee Name :</label>
-            <select class="user_id" id="select2" name="user_id">
+            <select class="user_id" id="report-list-user" style="width:50%;" name="user_id">
             @foreach($users as $user)
                     <option value="{{ $user->id }}">{{ $user->fname }} {{ $user->lname }}</option>
             @endforeach
         </select>
         </div>
-            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive" id="list-reports">
                 <thead>
                 <tr>
                     <th>Institution Name</th>
@@ -42,7 +42,7 @@
                     <th>Time Spent</th>
                 </tr>
                 </thead>
-                <tbody>     
+                <tbody id="report-details-body">     
                 </tbody>
                 </table>
     </div>

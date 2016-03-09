@@ -242,4 +242,17 @@ $(".btn-accept-decline-plan").on("click",function(){
         $(target).modal('show');
         $(target).modal({"backdrop": "static"});
     });
+
+$('#report-list-user').select2()
+        .on("change", function(e) {
+            $("#report-details-body").empty();
+            $.ajax({
+                url : 'reports/'+$('#report-list-user').val(),
+                type : 'get',
+                dataType : 'text'
+            }).done(function (data){
+                    $("#list-reports tbody").append(data);
+            });
+        });
+$('#report-list-user').val($('#report-list-user option:first-child').val()).trigger('change');
 });

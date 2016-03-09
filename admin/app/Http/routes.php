@@ -46,6 +46,7 @@ Route::post('plans/update', 'PlansController@update');
 
 
 Route::get('reports', ['as' => 'Reports', 'uses' => 'ReportController@index']);
+Route::get('reports/{id}', 'ReportController@show');
 
 Route::get('getinventory', 'WelcomeController@getinventory');
 Route::controllers([
