@@ -54,15 +54,15 @@ class EmployeesController extends Controller {
 				        $mail->isSMTP(); // tell to use smtp
 				        $mail->CharSet = "utf-8"; // set charset to utf8
 				        $mail->SMTPAuth = true;  // use smpt auth
-				        $mail->SMTPSecure = "tls"; // or ssl
+				        $mail->SMTPSecure = "ssl"; // or ssl
 				        $mail->Host = "smtp.gmail.com";
 				        $mail->Port = 587; // most likely something different for you. This is the mailtrap.io port i use for testing. 
-				        $mail->Username = "royette.camahalan09@gmail.com";
-				        $mail->Password = "urmajesty";
-				        $mail->setFrom("royette.camahalan09@gmail.com", "ECE Calls");
+				        $mail->Username = "universalagencynotification@gmail.com";
+				        $mail->Password = "universal1234";
+				        $mail->setFrom("universalagencynotification@gmail.com", "ECE Calls");
 				        $mail->Subject = "Test";
 				        $mail->MsgHTML("This is a test");
-				        $mail->addAddress("margiealviola29@gmail.com", "Recipient Name");
+				        $mail->addAddress("margiealviola29@gmail.com");
 				        $mail->send();
 	        	return Redirect::back()->withFlash_message([
 	            'msg' => ' Employee successfully Added',
