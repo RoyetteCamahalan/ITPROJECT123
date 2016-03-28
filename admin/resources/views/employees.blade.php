@@ -89,35 +89,36 @@
 
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header">  
                     <h4 class="title">Settings</h4> 
                 </div>
-                <form class="form-horizontal user-form" role="form" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {!! Form::open(array('method' => 'post', 'id' => 'form_add_user', 'class'=> 'form-horizontal area-form')) !!}
                     <div class="modal-body">
+                    
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" class="form-control id" name="id">
                         <div class="form-group">
                             <label class="col-md-4 control-label">First Name</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="fname" required>
+                            <div class="col-md-6">`
+                                {!! Form::text('fname',null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Middle Name</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="mname">
+                                {!! Form::text('mname', null,['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Last Name</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="lname" required>
+                                {!! Form::text('lname',null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Position</label>
                             <div class="col-md-6">
-                                <select class="form-control position" name="position" required>
+                                <select class="form-control position" name="position" id="position">
                                     <option value="Medical Representative">Medical Representative</option>
                                     <option value="Admin">Admin</option>
                                 </select>
@@ -128,34 +129,36 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" required>
+                                {!! Form::text('email', null,['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Username</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="username" required>
+                                {!! Form::text('username', null,['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Password</label>
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password" required>
+                                {!! Form::password('password',['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Confirm Password</label>
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation" required>
+                                {!! Form::password('password_confirmation',['class' => 'form-control']) !!}
                             </div>
                         </div>
+                        </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
-                        <button type="submit" class="btn btn-success btn-sm" name="btn-save">Save</button>
+                        <button type="button" class="btn btn-success btn-sm" id="btn_submit_form_save_user">Save</button>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

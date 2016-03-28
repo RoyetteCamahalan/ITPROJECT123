@@ -42,13 +42,16 @@ class MaterialInventoryController extends Controller {
 		$inventories=DB::select("select p.id,p.name, COALESCE(SUM(CASE WHEN x.MATERIAL_ID_FK = 1 THEN x.MATERIAL_COUNT END),0) Sample, COALESCE(SUM(CASE WHEN x.MATERIAL_ID_FK = 2 THEN x.MATERIAL_COUNT END),0) Literatures, COALESCE(SUM(CASE WHEN x.MATERIAL_ID_FK = 3 THEN x.MATERIAL_COUNT END),0) Promomaterials from ( select id,'0' as map_id, product_id_fk,material_id_fk,material_count from materialreplenishment union select id,material_map_fk, product_id_fk,material_id_fk,material_count*-1 from materialallocations) as x right join products p on p.id=x.product_id_fk GROUP BY p.id,p.name");
 		$allocations=materialallocations::join('products', 'products.id', '=', 'materialallocations.product_id_fk')
 			->join('materials', 'materials.id', '=', 'materialallocations.material_id_fk')
-			->join('institutiondoctorsmaps', 'institutiondoctorsmaps.id', '=', 'materialallocations.material_map_fk')
+			->join('calls', 'calls.id', '=', 'materialallocations.material_map_fk')
+			->join('institutiondoctorsmaps', 'institutiondoctorsmaps.id', '=', 'calls.INST_DOC_ID_FK')
 			->join('doctors', 'doctors.doc_id', '=', 'institutiondoctorsmaps.doctor_id_fk')
 			->join('institution', 'institution.id', '=', 'institutiondoctorsmaps.institution_id_fk')
+			->join('users', 'users.id', '=', 'calls.user_id_fk')
 			->get(array('materialallocations.id','products.name as productname','materials.name as materialname',
 				'materialallocations.material_count','materialallocations.material_id_fk',
 				'materialallocations.product_id_fk','materialallocations.created_at',
-				'doctors.doc_name as doctorname','institution.name as institutionname'));
+				'doctors.doc_name as doctorname','institution.name as institutionname',
+				'users.fname as userfname','users.lname as userlname'));
 		return view('materialinventory',compact('products','materials','replenishments','inventories','allocations'));
 	}
 

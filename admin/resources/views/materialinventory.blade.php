@@ -63,6 +63,7 @@
                         <th>Material Name</th>
                         <th>Material Count</th>
                         <th>Date</th>
+                        <th>Med Rep</th>
                     </tr>
                     </thead>
                     <tbody>     
@@ -73,6 +74,7 @@
                             <td class="center">{{ $allocation->materialname}}</td>
                             <td class="center">{{ $allocation->material_count}}</td>
                             <td class="center">{{ $allocation->created_at}}</td>
+                            <td class="center">{{ $allocation->userfname}} {{ $allocation->userlname}}</td>
                         </tr>
                     @endforeach
                     </tbody>

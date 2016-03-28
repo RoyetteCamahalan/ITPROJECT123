@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+use Redirect;
 use App\products;
 use App\materials;
 
@@ -36,9 +37,17 @@ class ProductsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$input = $request->all();
+		$product= new products;
+		$product->name=$input['name'];
+		if($product->save())
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Product successfully Added',
+            'type' => 'success'
+        ]);
+        return false;
 	}
 
 	/**
@@ -69,9 +78,19 @@ class ProductsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update(Request $request){
+
+		$product=products::whereid($request->get('id'))->first();
+		$product->fill($request->all());
+		if($product->save())
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Product successfully edited',
+            'type' => 'success'
+        ]);
+        return Redirect::back()->withFlash_message([
+            'msg' => ' Edit Failed',
+            'type' => 'warning'
+        ]);
 	}
 
 	/**

@@ -136,7 +136,17 @@ $(".add-product").on("click",function(){
         $('#ProductModal').modal('show');
         $('#ProductModal').modal({"backdrop": "static"});
     });
-
+$(".datatable").on("click",".edit-product",function(){
+        var $this=$(this);
+        var productname=$this.attr('data-name');
+        var id=$this.attr('data-id');
+        $('#ProductModal').find('.title').text('Edit Product');
+        $('#ProductModal').find('.product-form').attr('action','products/update');
+        $('#ProductModal').find('.name').val(productname);
+        $('#ProductModal').find('.id').val(id);
+        $('#ProductModal').modal('show');
+        $('#ProductModal').modal({"backdrop": "static"});
+    });
 
 $('.add-institution').on('click',function(){
         var target='#InstitutionModal';
@@ -146,12 +156,45 @@ $('.add-institution').on('click',function(){
         $(target).modal({"backdrop": "static"});
     });
 
+$(".datatable").on("click",".btn-edit-institution",function(){
+        var $this=$(this);
+        var institution_name=$this.attr('data-name');
+        var id=$this.attr('data-id');
+        var address=$this.attr('data-address');
+        var area=$this.attr('data-area');
+        $('#InstitutionModal').find('.title').text('Edit Institution');
+        $('#InstitutionModal').find('.institution-form').attr('action','institutions/update');
+        $('#InstitutionModal').find('.name').val(institution_name);
+        $('#InstitutionModal').find('.id').val(id);
+        $('#InstitutionModal').find('.address').val(address);
+        $('#InstitutionModal').find('.area').val(area);
+        $('#InstitutionModal').modal('show');
+        $('#InstitutionModal').modal({"backdrop": "static"});
+    });
+
 $('.add-area').on('click',function(){
         var target='#AreaModal';
         $(target).find('.area-form').attr('action','area/store');
         $(target).find('.title').text('Add Area');
         $(target).modal('show');
         $(target).modal({"backdrop": "static"});
+    });
+
+
+$(".datatable").on("click",".btn-edit-area",function(){
+        var $this=$(this);
+        var area_name=$this.attr('data-name');
+        var id=$this.attr('data-id');
+        var description=$this.attr('data-description');
+        var employee=$this.attr('data-employee');
+        $('#AreaModal').find('.title').text('Edit Area');
+        $('#AreaModal').find('.area-form').attr('action','area/update');
+        $('#AreaModal').find('.name').val(institution_name);
+        $('#AreaModal').find('.id').val(id);
+        $('#AreaModal').find('.address').val(description);
+        $('#AreaModal').find('.area').val(employee);
+        $('#AreaModal').modal('show');
+        $('#AreaModal').modal({"backdrop": "static"});
     });
 
 $('.add-doctormap').on('click',function(){
@@ -256,3 +299,56 @@ $('#report-list-user').select2()
         });
 $('#report-list-user').val($('#report-list-user option:first-child').val()).trigger('change');
 });
+
+$("#btn_submit_form_save_user").click(function (){
+    var form = $("#form_add_user");
+    var data = {
+        fname: formfinder(form, 'fname', 'input'),
+        mname: formfinder(form, 'mname', 'input'),
+        lname: formfinder(form, 'lname', 'input'),
+        position: formfinder(form, 'position', 'select'),
+        email: formfinder(form, 'email', 'input'),
+        username: formfinder(form, 'username', 'input'),
+        password: formfinder(form, 'password', 'input'),
+        password_confirmation: formfinder(form, 'password_confirmation', 'input'),
+        _token: formfinder(form, '_token', 'input')
+    };
+    var $this = $(this);
+    $this.attr("disabled", "disabled").addClass("disabled").html("Please wait...");
+
+    $.ajax({
+        url: 'employees/store',
+        type: 'post',
+        dataType: 'json',    
+        data: {
+            fname: formfinder(form, 'fname', 'input'),
+            mname: formfinder(form, 'mname', 'input'),
+            lname: formfinder(form, 'lname', 'input'),
+            position: formfinder(form, 'position', 'select'),
+            email: formfinder(form, 'email', 'input'),
+            username: formfinder(form, 'username', 'input'),
+            password: formfinder(form, 'password', 'input'),
+            password_confirmation: formfinder(form, 'password_confirmation', 'input'),
+            _token: formfinder(form, '_token', 'input')
+        }
+    }).done(function(data){
+        console.log(data);
+        $this.removeClass("disabled").removeAttr("disabled").html("Save");
+
+        _clear_form_errors(form);
+
+        $.each(data.errors, function (i, row){
+            _error($('input[name="'+i+'"]'), row[0]);
+        });
+
+            // if successful, hide the modal
+            if( data.status_code == "200" ){
+                $("#UserModal").modal('hide');
+                showAlert("Employee", "Employee added successfully.", 'success', 'notify');
+                location.reload();
+            }
+
+        }).fail(function (){
+            $this.removeClass("disabled").removeAttr("disabled").html("Save");
+        });
+    });

@@ -47,7 +47,7 @@
                             <td>{{ $product->name}}</td>
                             <td class="center">{{ $product->created_at}}</td>
                             <td class="center" style="text-align: center;">
-                            <a class="btn btn-info btn-xs add-edit-product" href="#"  data-action="Edit" data-id="{{ $product->id}}">
+                            <a class="btn btn-info btn-xs edit-product" href="#" data-id="{{ $product->id}}" data-name="{{ $product->name}}">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
                                 

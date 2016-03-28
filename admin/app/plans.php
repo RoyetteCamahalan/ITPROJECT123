@@ -15,6 +15,6 @@ class plans extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['year','cycle_number','status','status_date'];
+	protected $fillable = ['year','cycle_number','status_id','status_date'];
 
 }

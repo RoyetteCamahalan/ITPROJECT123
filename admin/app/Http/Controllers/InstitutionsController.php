@@ -78,6 +78,21 @@ class InstitutionsController extends Controller {
         return false;
 	}
 
+	public function store_area(Request $request)
+	{
+		$input = $request->all();
+        $area = new areas;
+        $area->name = ucfirst( $input['name'] );
+        $area->description = $input['description'];
+        $area->assigned_employee = $input['assigned_employee'];
+        if($area->save())
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Area successfully Added',
+            'type' => 'success'
+        ]);
+        return false;
+	}
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -132,9 +147,20 @@ class InstitutionsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update(Request $request){
+
+		$input = $request->all();
+		$institution = institutions::whereid($request->get('id'))->first();
+        $institution->fill($request->all());
+        if($institution->save())
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Institution Update successfully',
+            'type' => 'success'
+        ]);
+        return Redirect::back()->withFlash_message([
+            'msg' => ' Edit Failed',
+            'type' => 'warning'
+        ]);
 	}
 
 	/**

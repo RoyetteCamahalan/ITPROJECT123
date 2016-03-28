@@ -59,9 +59,9 @@
                         <td class="center">{{ $institution->address}}</td>
                         <td class="center">{{ $institution->area_name}}</td>
                         <td class="center">{{ $institution->created_at}}</td>
-
+                        <!--data-modal-target="#InstitutionModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $institution->id}}"  data-target=".institution-form"-->
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-success btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $institution->id}}"  data-target=".doctor-form">
+                            <a class="btn btn-success btn-xs btn-edit-institution" href="#" data-name="{{ $institution->name}}" data-id="{{ $institution->id}}" data-address ="{{ $institution->address}}" data-area="{{ $institution->area_name}}">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
                             
@@ -92,7 +92,7 @@
                         <td class="center">{{ $area->fname.' '.$area->lname}}</td>
 
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-success btn-xs btn-edit-add" href="#">
+                            <a class="btn btn-success btn-xs btn-edit-area" href="#" data-id="{{ $area->id}}" data-name="{{ $area->name}}" data-description="{{ $area->description}}" data-employee="{{ $area->fname.' '.$area->lname}}">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
                             

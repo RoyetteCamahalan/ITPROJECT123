@@ -225,6 +225,7 @@
 <!-- application script for Charisma demo -->
 <script src="{{ asset('/js/charisma.js') }}"></script>
 <script src="{{ asset('/js/uret.js') }}"></script>
+<script src="{{ asset('/js/fn.uret.js') }}"></script>
 <!--script src="{{asset('/js/autocomplete.js')}}"></script!-->
 
 </body>

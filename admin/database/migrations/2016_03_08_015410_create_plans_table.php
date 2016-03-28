@@ -27,7 +27,7 @@ class CreatePlansTable extends Migration {
 			$table->integer('user_id_fk');
 			$table->integer('year');
 			$table->integer('cycle_number');
-			$table->integer('status')->default('0');
+			$table->integer('status_id')->default('0');
 			$table->date('status_date')->nullable();
 			$table->timestamps();
 		});
