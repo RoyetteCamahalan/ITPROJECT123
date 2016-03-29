@@ -61,7 +61,7 @@
                         <td class="center">{{ $institution->created_at}}</td>
                         <!--data-modal-target="#InstitutionModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $institution->id}}"  data-target=".institution-form"-->
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-success btn-xs btn-edit-institution" href="#" data-name="{{ $institution->name}}" data-id="{{ $institution->id}}" data-address ="{{ $institution->address}}" data-area="{{ $institution->area_name}}">
+                            <a class="btn btn-success btn-xs btn-edit-institution" href="#" data-name="{{ $institution->name}}" data-id="{{ $institution->id}}" data-address ="{{ $institution->address}}" data-area="{{ $institution->area_id}}">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
                             

@@ -186,7 +186,8 @@ $(".datatable").on("click",".btn-edit-institution",function(){
         $('#InstitutionModal').find('.name').val(institution_name);
         $('#InstitutionModal').find('.id').val(id);
         $('#InstitutionModal').find('.address').val(address);
-        $('#InstitutionModal').find('.area').val(area);
+        $('#InstitutionModal').find("select[name='area_id']").removeAttr("selected")
+                        .children("option[value='"+area+"']").attr("selected", "selected");
         $('#InstitutionModal').modal('show');
         $('#InstitutionModal').modal({"backdrop": "static"});
     });

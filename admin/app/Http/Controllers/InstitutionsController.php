@@ -24,7 +24,7 @@ class InstitutionsController extends Controller {
 	public function index()
 	{
 		//
-		$institutions=institutions::join('areas','areas.id',"=","institution.area_id")->get(array('institution.id','institution.address','institution.name','institution.created_at','areas.name as area_name'));
+		$institutions=institutions::join('areas','areas.id',"=","institution.area_id")->get(array('institution.id','institution.address','institution.name','institution.created_at','areas.name as area_name','areas.id as area_id'));
 		$areas=area::join('users','areas.assigned_employee',"=","users.id")->get(array('areas.id as id','users.id as userid','areas.name','areas.description','areas.created_at','users.fname','users.lname'));
 		$doctors=doctors::orderBy('doc_name','asc')->get();
 		$doctorclasses=doctorclasses::all();
