@@ -55,6 +55,9 @@ Route::get('reports', ['as' => 'Reports', 'uses' => 'ReportController@index']);
 Route::get('reports/{id}', 'ReportController@show');
 
 Route::get('getinventory', 'WelcomeController@getinventory');
+
+Route::post('specializations/store', 'SpecializationsController@store');
+Route::post('specializations/update', 'SpecializationsController@update');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',	

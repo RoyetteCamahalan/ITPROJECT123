@@ -132,9 +132,7 @@
 
         <div class="tab-pane" id="specialization">
             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-                <button class="btn-success btn pull-right btn-sm" style="margin-bottom:5px" 
-                    data-modal-target="#DoctorModal" data-action="Add" data-title="Doctor" 
-                    data-target=".doctor-form" data-url="doctors/">
+                <button class="btn-success btn pull-right btn-sm btn-add-specialization" style="margin-bottom:5px">
                 <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
                 <thead>
                 <tr>
@@ -149,7 +147,7 @@
                         <td>{{ $specialization->name}}</td>
                         <td class="center">{{ $specialization->created_at}}</td>
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-success btn-xs">
+                            <a class="btn btn-success btn-xs btn-edit-specialization" data-id="{{ $specialization->id}}" data-name="{{ $specialization->name}}">
                                 <i class="glyphicon glyphicon-edit icon-white" href="#"></i>
                             </a>
                             
@@ -299,4 +297,30 @@
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="SpecializationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="title">Settings</h4> 
+            </div>
+            <form class="form-horizontal specialization-form" role="form" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                        <input type="hidden" class="form-control id" name="id">
+                    <div class="form-group">
+                        <label for="name">Specialization Name</label>
+                        <input type="text" class="form-control name" required name="name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
+                    <button type="submit" class="btn btn-success btn-sm" name="btn-save">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @stop

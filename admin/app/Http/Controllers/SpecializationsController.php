@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
-
+use Redirect;
+use App\specializations;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -32,9 +33,17 @@ class SpecializationsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$input = $request->all();
+        $specialization = new specializations;
+        $specialization->name = ucfirst( $input['name'] );
+        if($specialization->save())
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Specialization successfully Added',
+            'type' => 'success'
+        ]);
+        return false;
 	}
 
 	/**
@@ -65,9 +74,17 @@ class SpecializationsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
-		//
+		$input = $request->all();
+        $specialization =specializations::whereid($request->get('id'))->first();
+        $specialization->name = ucfirst( $input['name'] );
+        if($specialization->save())
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Specialization successfully Updated',
+            'type' => 'success'
+        ]);
+        return false;
 	}
 
 	/**

@@ -76,6 +76,25 @@ $(".btn-accept-doctor").on("click",function(){
         $(target).modal('show');
     	$(target).modal({"backdrop": "static"});
     });
+$('.btn-add-specialization').on('click',function(){
+        var target='#SpecializationModal';
+        $(target).find('.specialization-form').attr('action','specializations/store');
+        $(target).find('.title').text('Add Specialization');
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
+$(".datatable").on("click",".btn-edit-specialization",function(){
+        var $this=$(this);
+        var name=$this.attr('data-name');
+        var id=$this.attr('data-id');
+        var target='#SpecializationModal';
+        $(target).find('.specialization-form').attr('action','specializations/update');
+        $(target).find('.title').text('Edit Specialization');
+        $('.specialization-form').find('.id').val(id);
+        $('.specialization-form').find('.name').val(name);
+        $(target).modal('show');
+        $(target).modal({"backdrop": "static"});
+    });
 $(".institution-name").on("click",function(){
         var $this=$(this);
         var title=$this.attr("data-title");
