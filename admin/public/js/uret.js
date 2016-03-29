@@ -329,7 +329,7 @@ $(".btn-accept-decline-plan").on("click",function(){
         var targetform='.plan-form';
         var value=$(this).attr('data-value');
         $(targetform).find("input[name='id']").val(id);
-        $(targetform).find("input[name='status']").val(value);
+        $(targetform).find("input[name='status_id']").val(value);
         $(target).find('.title').text('Do you want to '+action+' this plan?');
         //$('.title').text(id);
         $(target).modal('show');

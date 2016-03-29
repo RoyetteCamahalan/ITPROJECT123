@@ -195,7 +195,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="modal-body">
                         <input type="hidden" class="form-control id" name="id">
-                        <input type="hidden" class="form-control status" name="status">
+                        <input type="hidden" class="form-control status_id" name="status_id">
                         <h4 class="title">Do you want to approve this doctor?</h4> 
                     </div>
                     <div class="modal-footer">
