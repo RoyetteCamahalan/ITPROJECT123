@@ -49,13 +49,13 @@
                             @endif
                         </td>
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-success btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="View" data-title="Doctor" data-url="doctors/" data-id="{{ $users->id}}"  data-target=".doctor-form">
-                                <i class="glyphicon glyphicon-eye-open icon-white"></i>
-                            </a>
-                            <a class="btn btn-info btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="Edit" data-title="Doctor" data-url="doctors/" data-id="{{ $users->id}}"  data-target=".doctor-form">
+                            <!--a class="btn btn-success btn-xs btn-edit-add" href="#" data-modal-target="#DoctorModal" data-action="View" data-title="Doctor" data-url="doctors/" data-id="{{ $users->id}}"  data-target=".doctor-form">
+                                <i class="glyphicon glyphicon-eye-open icon-white"></>
+                            </a-->
+                            <a class="btn btn-info btn-xs btn-edit-employee" href="#" data-id="{{ $users->id}}" data-fname="{{ $users->fname}}" data-lname="{{ $users->lname}}" data-position="{{ $users->position}}" data-hiredDate="{{ $users->hired_date}}" data-mname="{{ $users->mname}}" data-username="{{ $users->username}}" data-email="{{ $users->email}}">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
-                            @if($users->is_active==0)
+                            <!-- @if($users->is_active==0)
                                 <a class="btn btn-success btn-xs btn-accept-doctor" href="#" data-modal-target="#DoctorModal-Accept" 
                                  data-id="{{ $users->id}}"  data-target=".doctor-form" data-value="1" data-action="activate">
                                     <i class="glyphicon glyphicon-thumbs-up icon-white"></i>
@@ -65,8 +65,7 @@
                                     data-id="{{ $users->id}}"  data-target=".doctor-form" data-value="2" data-action="deactivate">
                                     <i class="glyphicon glyphicon-thumbs-down"></i>
                                 </a>
-                            @endif
-                            
+                            @endif -->
                         </td>
                     </tr>
                 @endforeach
@@ -82,7 +81,58 @@
 </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 
+ <div class="modal fade" id="UserModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
 
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="title">Settings</h4> 
+                </div>
+                <form class="form-horizontal user-form" role="form" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="modal-body">
+                            <input type="hidden" class="form-control id" name="id">
+                        <div class="form-group">
+                            <label for="name">First Name</label>
+                            <input type="text" class="form-control fname" required name="fname">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Middle Name</label>
+                            <input type="text" class="form-control mname" required name="mname">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Last Name</label>
+                            <input type="text" class="form-control lname" required name="lname">
+                        </div>
+                         <div class="form-group">
+                            <label for="area_id">Position</label>
+                            <br>
+                             <select class="form-control position" name="position" id="position">
+                                    <option value="Medical Representative">Medical Representative</option>
+                                    <option value="Admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">E-Mail Address</label>
+                            <input type="text" class="form-control email" required name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Username</label>
+                            <input type="text" class="form-control username" required name="username">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-success btn-sm" name="btn-save">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
@@ -132,20 +182,20 @@
                                 {!! Form::text('email', null,['class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group username">
                             <label class="col-md-4 control-label">Username</label>
                             <div class="col-md-6">
                                 {!! Form::text('username', null,['class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group password">
                             <label class="col-md-4 control-label">Password</label>
                             <div class="col-md-6">
                                 {!! Form::password('password',['class' => 'form-control']) !!}
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group password_con">
                             <label class="col-md-4 control-label">Confirm Password</label>
                             <div class="col-md-6">
                                 {!! Form::password('password_confirmation',['class' => 'form-control']) !!}

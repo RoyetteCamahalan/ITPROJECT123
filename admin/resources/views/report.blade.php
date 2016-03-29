@@ -40,6 +40,9 @@
                     <th>Start Time</th>
                     <th>End Time</th>
                     <th>Time Spent</th>
+                    <!--th>Latitude</th>
+                    <th>Longitude</th-->
+                    <th>Location</th>
                 </tr>
                 </thead>
                 <tbody id="report-details-body">     

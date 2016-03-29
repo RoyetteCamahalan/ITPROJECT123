@@ -29,13 +29,14 @@ Route::post('institutions/storemap', 'InstitutionsController@storemap');
 Route::get('institutions/showmap/{institution_id_fk}', 'InstitutionsController@showmap');
 Route::post('institutions/update', 'InstitutionsController@update');
 
-Route::post('area/store', 'InstitutionsController@store_area');
-Route::post('area/update', 'InstitutionsController@update_area');
+Route::post('institutions/store_area', 'InstitutionsController@store_area');
+Route::post('institutions/update_area', 'InstitutionsController@update_area');
 
 Route::get('institutions/getdoctors/{id}', 'DoctorsController@getdoctors');
 
 Route::get('employees', ['as' => 'Employee', 'uses' => 'EmployeesController@index']);
 Route::post('employees/store', 'EmployeesController@store');
+Route::post('employees/update', 'EmployeesController@update');
 
 Route::get('products', ['as' => 'Product', 'uses' => 'ProductsController@index']);
 Route::post('products/store', 'ProductsController@store');

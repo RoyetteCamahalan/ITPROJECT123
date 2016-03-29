@@ -25,7 +25,7 @@ class InstitutionsController extends Controller {
 	{
 		//
 		$institutions=institutions::join('areas','areas.id',"=","institution.area_id")->get(array('institution.id','institution.address','institution.name','institution.created_at','areas.name as area_name'));
-		$areas=area::join('users','areas.assigned_employee',"=","users.id")->get(array('areas.id as id','areas.name','areas.description','areas.created_at','users.fname','users.lname'));
+		$areas=area::join('users','areas.assigned_employee',"=","users.id")->get(array('areas.id as id','users.id as userid','areas.name','areas.description','areas.created_at','users.fname','users.lname'));
 		$doctors=doctors::orderBy('doc_name','asc')->get();
 		$doctorclasses=doctorclasses::all();
 		$users=User::whereposition('Medical Representative')->get();
@@ -81,11 +81,11 @@ class InstitutionsController extends Controller {
 	public function store_area(Request $request)
 	{
 		$input = $request->all();
-        $area = new areas;
-        $area->name = ucfirst( $input['name'] );
-        $area->description = $input['description'];
-        $area->assigned_employee = $input['assigned_employee'];
-        if($area->save())
+        $areas = new area;
+        $areas->name = ucfirst( $input['name'] );
+        $areas->description = $input['description'];
+        $areas->assigned_employee = $input['assigned_employee'];
+        if($areas->save())
         	return Redirect::back()->withFlash_message([
             'msg' => ' Area successfully Added',
             'type' => 'success'
@@ -154,7 +154,24 @@ class InstitutionsController extends Controller {
         $institution->fill($request->all());
         if($institution->save())
         	return Redirect::back()->withFlash_message([
-            'msg' => ' Institution Update successfully',
+            'msg' => ' Institution Updatd successfully',
+            'type' => 'success'
+        ]);
+        return Redirect::back()->withFlash_message([
+            'msg' => ' Edit Failed',
+            'type' => 'warning'
+        ]);
+	}
+
+
+	public function update_area(Request $request){
+
+		$input = $request->all();
+		$areas = area::whereid($request->get('id'))->first();
+        $areas->fill($request->all());
+        if($areas->save())
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Area Updated successfully',
             'type' => 'success'
         ]);
         return Redirect::back()->withFlash_message([

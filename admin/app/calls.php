@@ -17,7 +17,7 @@ class calls extends Model {
 	 * @var array
 	 */
 	protected $fillable = ['INST_DOC_ID_FK','day_number','STATUS_ID_FK','PLANNED','MAKEUP',
-							'START_DATETIME','END_DATETIME','LATITUDE','LONGITUDE','RESCHEDULE_DATE','SIGNED_DAY_ID',
-							'RETRY_COUNT','JOINT_CALL','QUICK_SIGN'];
+							'START_DATETIME','END_DATETIME','LATITUDE','LONGITUDE','region','municipal',
+							'RETRY_COUNT','JOINT_CALL','barangay'];
 
 }

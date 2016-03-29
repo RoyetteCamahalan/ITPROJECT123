@@ -174,7 +174,7 @@ $(".datatable").on("click",".btn-edit-institution",function(){
 
 $('.add-area').on('click',function(){
         var target='#AreaModal';
-        $(target).find('.area-form').attr('action','area/store');
+        $(target).find('.area-form').attr('action','institutions/store_area');
         $(target).find('.title').text('Add Area');
         $(target).modal('show');
         $(target).modal({"backdrop": "static"});
@@ -187,12 +187,14 @@ $(".datatable").on("click",".btn-edit-area",function(){
         var id=$this.attr('data-id');
         var description=$this.attr('data-description');
         var employee=$this.attr('data-employee');
+        console.log(employee);
         $('#AreaModal').find('.title').text('Edit Area');
-        $('#AreaModal').find('.area-form').attr('action','area/update');
-        $('#AreaModal').find('.name').val(institution_name);
+        $('#AreaModal').find('.area-form').attr('action','institutions/update_area');
+        $('#AreaModal').find('.name').val(area_name);
         $('#AreaModal').find('.id').val(id);
-        $('#AreaModal').find('.address').val(description);
-        $('#AreaModal').find('.area').val(employee);
+        $('#AreaModal').find('.description').val(description);
+        $('#AreaModal').find("select[name='assigned_employee']").removeAttr("selected")
+                        .children("option[value='"+employee+"']").attr("selected", "selected");
         $('#AreaModal').modal('show');
         $('#AreaModal').modal({"backdrop": "static"});
     });
@@ -215,6 +217,35 @@ $('.add-employee').on('click',function(){
         $(target).modal('show');
         $(target).modal({"backdrop": "static"});
     });
+
+
+$(".datatable").on("click",".btn-edit-employee",function(){
+        //$('.username').css('display', 'none');
+        $('.password').css('display', 'none');
+        $('.password_con').css('display', 'none');
+        var $this=$(this);
+        var fname=$this.attr('data-fname');
+        var mname=$this.attr('data-mname');
+        var username=$this.attr('data-username');
+        var lname=$this.attr('data-lname');
+        var id=$this.attr('data-id');
+        var hire_date=$this.attr('data-hiredDate');
+        var position=$this.attr('data-position');
+        var email = $this.attr('data-email');
+        $('#UserModalEdit').find('.title').text('Edit Employee');
+        $('#UserModalEdit').find('.user-form').attr('action','employees/update');
+        $('#UserModalEdit').find('.id').val(id);
+        $('#UserModalEdit').find("input[name='fname']").val(fname);
+        $('#UserModalEdit').find("input[name='mname']").val(mname);
+        $('#UserModalEdit').find("input[name='lname']").val(lname);
+        $('#UserModalEdit').find("input[name='email']").val(email);
+        $('#UserModalEdit').find("select[name='position']").removeAttr("selected")
+                        .children("option[value='"+position+"']").attr("selected", "selected");
+        $('#UserModalEdit').find("input[name='username']").val(username);
+        $('#UserModalEdit').modal('show');
+        $('#UserModalEdit').modal({"backdrop": "static"});
+    });
+
 
 $('.btn-add-replenishment').on('click',function(){
         var target='#ReplineshmentModal';

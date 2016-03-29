@@ -73,7 +73,7 @@
         </div>
 
         <div class="tab-pane" id="areas">
-            <table class="table table-striped table-bordered bootstrap-datatable responsive">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
                 <button class="btn-success btn pull-right add-area btn-sm" style="margin-bottom:5px">
                 <i class="glyphicon glyphicon-plus icon-white"></i> Add New</button>
                 <thead>
@@ -92,7 +92,7 @@
                         <td class="center">{{ $area->fname.' '.$area->lname}}</td>
 
                         <td class="center" style="text-align: center;">
-                            <a class="btn btn-success btn-xs btn-edit-area" href="#" data-id="{{ $area->id}}" data-name="{{ $area->name}}" data-description="{{ $area->description}}" data-employee="{{ $area->fname.' '.$area->lname}}">
+                            <a class="btn btn-success btn-xs btn-edit-area" href="#" data-id="{{ $area->id}}" data-name="{{ $area->name}}" data-description="{{ $area->description}}" data-employee="{{ $area->userid}}">
                                 <i class="glyphicon glyphicon-edit icon-white"></i>
                             </a>
                             

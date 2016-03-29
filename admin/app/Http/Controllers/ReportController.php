@@ -49,7 +49,7 @@ class ReportController extends Controller {
 	 */
 	public function show($id)
 	{
-		$reports=DB::select("select i.name as institutionname, d.doc_name as doctorname, s.name as specialization, dc.name as classname, dc.max_visit, DATE(c.START_DATETIME) as calldate, c.START_DATETIME as callstart, c.END_DATETIME as callend, TIMESTAMPDIFF(SECOND, c.START_DATETIME, c.END_DATETIME)as timespent from calls c INNER JOIN users u on u.id=c.user_id_fk INNER JOIN institutiondoctorsmaps idm on idm.id=c.INST_DOC_ID_FK INNER JOIN doctors d on d.doc_id=idm.doctor_id_fk INNER JOIN doctorclasses dc on dc.id=idm.class_id_fk INNER JOIN institution i on i.id=idm.institution_id_fk INNER JOIN specializations s on s.id=d.specialization_id_fk
+		$reports=DB::select("select i.name as institutionname, d.doc_name as doctorname, s.name as specialization, dc.name as classname, dc.max_visit, DATE(c.START_DATETIME) as calldate, c.START_DATETIME as callstart, c.END_DATETIME as callend, c.region,c.municipal,c.barangay, c.LATITUDE,c.LONGITUDE, TIMESTAMPDIFF(SECOND, c.START_DATETIME, c.END_DATETIME)as timespent from calls c INNER JOIN users u on u.id=c.user_id_fk INNER JOIN institutiondoctorsmaps idm on idm.id=c.INST_DOC_ID_FK INNER JOIN doctors d on d.doc_id=idm.doctor_id_fk INNER JOIN doctorclasses dc on dc.id=idm.class_id_fk INNER JOIN institution i on i.id=idm.institution_id_fk INNER JOIN specializations s on s.id=d.specialization_id_fk
 				WHERE u.id=".$id);
 		$str='';
 		foreach ($reports as $report){
@@ -61,11 +61,15 @@ class ReportController extends Controller {
 						<td class='center'>".$report->calldate."</td>
 						<td class='center'>".$report->callstart."</td>
 						<td class='center'>".$report->callend."</td>
-						<td class='center'>".$report->timespent." s</td></tr>";
+						<td class='center'>".$report->timespent." s</td>
+
+					
+						<td class='center'>".$report->barangay.", ".$report->municipal.", ".$report->region."</td></tr>";
 		}
 		return $str;
 	}
-
+	/*<td class='center'>".$report->LATITUDE."</td>
+						<td class='center'>".$report->LONGITUDE."</td>*/
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -98,5 +102,4 @@ class ReportController extends Controller {
 	{
 		//
 	}
-
 }

@@ -237,14 +237,31 @@ class EmployeesController extends Controller {
         $return_data['errors'] = $errors;
         return json_encode($return_data);
 	}
-/*
+
 	public function update(Request $request){
 
-		$doctors=doctors::wheredoc_id($request->get('doc_id'))->first();
-		$doctors->fill($request->all());
-		if($doctors->save())
+		$user=User::whereid($request->get('id'))->first();
+		$user->fill($request->all());
+		if($user->save())
         	return Redirect::back()->withFlash_message([
-            'msg' => ' Doctor successfully edited',
+            'msg' => ' Employee successfully edited',
+            'type' => 'success'
+        ]);
+        return Redirect::back()->withFlash_message([
+            'msg' => ' Edit Failed',
+            'type' => 'warning'
+        ]);
+	}
+
+
+	/*public function update_area(Request $request){
+
+		$input = $request->all();
+		$areas = area::whereid($request->get('id'))->first();
+        $areas->fill($request->all());
+        if($areas->save())
+        	return Redirect::back()->withFlash_message([
+            'msg' => ' Area Updated successfully',
             'type' => 'success'
         ]);
         return Redirect::back()->withFlash_message([
